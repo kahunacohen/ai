@@ -12,7 +12,7 @@ CREATE TABLE products (
 	price INTEGER
 );
 CREATE TABLE purchases (
-purchase_id INTEGER PRIMARY KEY,
-contact_id INTEGER REFERENCES contacts(contact_id),
-product_id INTEGER REFERENCES products(product_id)
+	purchase_id INTEGER PRIMARY KEY,
+	contact_id INTEGER REFERENCES contacts(contact_id),
+	product_id INTEGER REFERENCES products(product_id)
 );
