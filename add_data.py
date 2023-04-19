@@ -5,11 +5,44 @@ tables from scratch. This script populates tables with data, generating:
 - A many-to-many relation between contacts and products via a through-table
   called purchases.
 """
-
+import datetime
 import random
+import string
 import sqlite3
+import sys
 
-import names
+
+def generate_date(start_date="2020-01-01", end_date="2023-04-01"):
+    """
+    Returns a random date between the start and end dates.
+    
+    Args:
+    start_date (str or datetime.date): The start date in ISO format or as a datetime.date object.
+    end_date (str or datetime.date): The end date in ISO format or as a datetime.date object.
+    
+    Returns:
+    datetime.date: A random date between the start and end dates.
+    """
+    
+    # Convert the start and end dates to datetime.date objects if necessary
+    if isinstance(start_date, str):
+        start_date = datetime.date.fromisoformat(start_date)
+    if isinstance(end_date, str):
+        end_date = datetime.date.fromisoformat(end_date)
+    
+    # Calculate the range of days between the start and end dates
+    delta = (end_date - start_date).days
+    
+    # Generate a random number of days between 0 and the range of days
+    random_days = random.randrange(delta)
+    
+    # Add the random number of days to the start date to get a random date
+    random_date = start_date + datetime.timedelta(days=random_days)
+    
+    return random_date
+
+def generate_string(max_length=5):
+    return str("".join(random.choice(string.ascii_letters) for _ in range(max_length)))
 
 def generate_phone():
     sequence = []
@@ -19,10 +52,11 @@ def generate_phone():
 
 # Create 200 random contacts
 contacts = [(
-	names.get_first_name(), 
-	names.get_last_name(),
-	f"{i}@gmail.com",
-	generate_phone()) for i in range(200)]
+	generate_string(8), 
+	generate_string(8),
+	f"{generate_string()}@gmail.com",
+	generate_phone(),
+	generate_date()) for i in range(200)]
 
 # create 200 random products
 
@@ -59,8 +93,8 @@ def add_contacts():
 	try:
 		cur.execute("DELETE FROM contacts")
 		for c in contacts:
-			q = f'''INSERT INTO contacts (first_name,last_name,email,phone)
-	    				   VALUES("{c[0]}","{c[1]}","{c[2]}","{c[3]}");'''
+			q = f'''INSERT INTO contacts (first_name,last_name,email,phone,date_created)
+	    				   VALUES("{c[0]}","{c[1]}","{c[2]}","{c[3]}","{c[4]}");'''
 			print(q)
 			cur.execute(q)
 		con.commit()
@@ -77,7 +111,7 @@ def add_products():
 		for p in products:
 			q = f'''INSERT INTO products (name,sku,price)
 				VALUES("{p[0]}", "{p[1]}", "{p[2]}");'''
-			print(q)
+			# print(q)
 			cur.execute(q)
 		con.commit()
 	except Exception as er:
@@ -93,9 +127,9 @@ def make_purchases():
 		for i,c in enumerate(contacts[:len(products)]):
 			c_id = i + 1	
 			product = products[i]
-			q = f'''INSERT INTO purchases (contact_id,product_id)
-				VALUES("{c_id}", "{random.randint(1, 20)}")'''
-			print(q)
+			q = f'''INSERT INTO purchases (contact_id,product_id,date_created)
+				VALUES("{c_id}", "{random.randint(1, 20)}","{generate_date()}")'''
+			# print(q)
 			con.execute(q)
 			con.commit()
 	except Exception as er:
