@@ -17,7 +17,15 @@ def generate_phone():
         sequence.append(str(random.randint(0, 9)))
     return "".join(sequence)
 
-contacts = [(names.get_first_name(), names.get_last_name(), f"{i}@gmail.com", generate_phone()) for i in range(20)]
+# Create 200 random contacts
+contacts = [(
+	names.get_first_name(), 
+	names.get_last_name(),
+	f"{i}@gmail.com",
+	generate_phone()) for i in range(200)]
+
+# create 200 random products
+
 		
 products = [
 	("Shower Head", "abc", 1500),
