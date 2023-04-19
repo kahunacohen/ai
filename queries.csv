@@ -1,0 +1,4 @@
+Free Text,SQL,Notes
+"List all products that were purchased between January 1, 2021 and June 1, 2021", "SELECT DISTINCT products.name FROM products INNER JOIN purchases ON products.product_id = purchases.product_id WHERE purchases.date_created BETWEEN "2021-01-01" AND "2021-06-01";","Exact dates in free text"
+"List all products that were purchased between the beginning of January 2021 and the beginning of June, 2021", "SELECT DISTINCT products.name FROM products INNER JOIN purchases ON products.product_id = purchases.product_id WHERE purchases.date_created BETWEEN "2021-01-01" AND "2021-06-01";","Using English words instead of exact dates"
+"List all products that were purchased between Jan 2021 and Jun 2021", "SELECT DISTINCT products.name FROM products INNER JOIN purchases ON products.product_id = purchases.product_id WHERE purchases.date_created BETWEEN "2021-01-01" AND "2021-06-01";","Even fuzzier. Abbreviate months and don't specify day"
