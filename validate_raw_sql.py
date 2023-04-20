@@ -1,4 +1,4 @@
-"""Parse queries.sql, extract base line queries and run them. This validates they are well-formed etc."""
+"""Parse queries.csv, extracting baseline queries validating them."""
 import csv
 import sqlite3
 import sys
