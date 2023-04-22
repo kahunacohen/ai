@@ -1,6 +1,8 @@
 Free Text,SQL,Notes
-List all products in alphabetical order"|SELECT ProductName FROM Products;|phrased as a command
-What are all of our products?|SELECT ProductName from products ORDER BY ProductName;|Phrased as a question
-List product categories in alphabetical order|SELECT CategoryName FROM Categories ORDER BY CategoryName;|""
-Who are all our Suppliers?|SELECT CompanyName FROM Suppliers ORDER BY CompanyName;|""
-Tell me all of our shippers|SELECT CompanyName FROM Shippers ORDER BY CompanyName;|""
+List all products in alphabetical order":SELECT ProductName FROM Products;:phrased as a command
+What are all of our products?:SELECT ProductName from products ORDER BY ProductName;:Phrased as a question
+List product categories in alphabetical order:SELECT CategoryName FROM Categories ORDER BY CategoryName;:""
+Who are all our Suppliers?:SELECT CompanyName FROM Suppliers ORDER BY CompanyName;:""
+Tell me all of our shippers:SELECT CompanyName FROM Shippers ORDER BY CompanyName;:""
+Who are my employees by first and last name?:SELECT LastName || ', ' || FirstName AS FullName FROM Employees ORDER BY FullName;:Concatenates two columns and sorts by last name by default
+List the last 10 order IDs ordered by date:SELECT OrderID from Orders ORDER BY OrderDate LIMIT 10;:""
