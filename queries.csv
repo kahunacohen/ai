@@ -8,6 +8,7 @@ Who are my employees by first and last name?:SELECT EmployeeID,LastName,FirstNam
 List all columns and all rows of the Orders table:SELECT OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry FROM Orders;:y
 Tell me all columns and unique/distinct rows of the Customers table:SELECT DISTINCT CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax FROM Customers;:y
 List all columns and rows of the CustomerDemographics table:SELECT CustomerTypeID,CustomerDesc FROM CustomerDemographics::y
+LIST alll columns and rows of the CustomerCustomerDemo table:SELECT CustomerID,CustomerTypeID FROM CustomerCustomerDemo;::y
 List all columns and rows of the EmployeeTerritories table:SELECT EmployeeID,TerritoryID FROM EmployeeTerritories;::y
 list all columns and rows of the Territories table:SELECT TerritoryID,TerritoryDescription,RegionID from Territories;::y
 List all columns and rows of the Regions table:SELECT RegionID,RegionDescription FROM Regions::y
