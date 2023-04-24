@@ -12,12 +12,15 @@ try:
     with open('./queries.csv', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter=":")
         for row in list(reader)[1:]:
+            free_text = row[0]
             sql = row[1]
-            print(f'Querying: {sql}')
+            print(free_text)
+            print(chalk.gray(f'Querying: {sql}'))
             res = cur.execute(sql).fetchall()
-            for row in res:
-                print(chalk.gray("".join([str(col) for col in row])))
+            # for row in res:
+            #     print(chalk.gray("".join([str(col) for col in row])))
             print(chalk.green("success!"))
+            print()
 except Exception as err:
     print(chalk.red(f'Problem running query: {err}'))
     sys.exit(1)
