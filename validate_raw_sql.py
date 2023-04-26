@@ -17,8 +17,8 @@ try:
             print(free_text)
             print(chalk.gray(f'Querying: {sql}'))
             res = cur.execute(sql).fetchall()
-            # for row in res:
-            #     print(chalk.gray("".join([str(col) for col in row])))
+            for row in res:
+                print(chalk.gray("".join([str(col) for col in row])))
             print(chalk.green("success!"))
             print()
 except Exception as err:

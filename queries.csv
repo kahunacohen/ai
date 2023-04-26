@@ -1,15 +1,17 @@
-Free:Text:SQL:Notes:Training(y/n):
-List all columns and the first 10 rows of the Order Details table:SELECT OrderID,ProductID,UnitPrice,Quantity,Discount FROM "Order Details" LIMIT 10:y
+Free Text:SQL:Notes:Training(y/n):
+List all columns and the first 10 rows of the Order Details table:SELECT OrderID,ProductID,UnitPrice,Quantity,Discount FROM "Order Details" LIMIT 10:Phrased as a command:y
 List all columns and rows of Products table, ordering by ProductName column:SELECT ProductID,ProductName,SupplierID,CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued from Products ORDER BY ProductName;:Phrased as a question:y
-List all columns and rows of the Categories table:SELECT CategoryID,CategoryName,Description,Picture FROM Categories ORDER BY CategoryName;:y
-Give me all columns and rows of the Suppliers table?:SELECT SupplierID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax,HomePage FROM Suppliers ORDER BY CompanyName;:y
-Tell me all of our shippers:SELECT ShipperID,CompanyName,Phone FROM Shippers ORDER BY CompanyName;:y
-Who are my employees by first and last name?:SELECT EmployeeID,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,Extension,Photo,Notes,ReportsTo,PhotoPath FROM Employees;:Concatenates two columns and sorts by last name by default:y
-List all columns and all rows of the Orders table:SELECT OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry FROM Orders;:y
-Tell me all columns and unique/distinct rows of the Customers table:SELECT DISTINCT CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax FROM Customers;:y
+List all columns and rows of the Categories table:SELECT CategoryID,CategoryName,Description FROM Categories ORDER BY CategoryName;::y
+Give me all columns and rows of the Suppliers table?:SELECT SupplierID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax,HomePage FROM Suppliers ORDER BY CompanyName;::y
+Tell me all of our shippers:SELECT ShipperID,CompanyName,Phone FROM Shippers ORDER BY CompanyName;:Alternate command verb:y
+Who are my employees by first and last name?:SELECT EmployeeID,LastName,FirstName,Title,TitleOfCourtesy,BirthDate,HireDate,Address,City,Region,PostalCode,Country,HomePhone,Extension,Notes,ReportsTo,PhotoPath FROM Employees;:alternate verb command:y
+List all columns and all rows of the Orders table:SELECT OrderID,CustomerID,EmployeeID,OrderDate,RequiredDate,ShippedDate,ShipVia,Freight,ShipName,ShipAddress,ShipCity,ShipRegion,ShipPostalCode,ShipCountry FROM Orders LIMIT 10;::y
+Tell me all columns and unique/distinct rows of the Customers table:SELECT DISTINCT CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax FROM Customers;:Unique/Distinct:y
 List all columns and rows of the CustomerDemographics table:SELECT CustomerTypeID,CustomerDesc FROM CustomerDemographics::y
 LIST alll columns and rows of the CustomerCustomerDemo table:SELECT CustomerID,CustomerTypeID FROM CustomerCustomerDemo;::y
 List all columns and rows of the EmployeeTerritories table:SELECT EmployeeID,TerritoryID FROM EmployeeTerritories;::y
 List all columns and rows of the Territories table:SELECT TerritoryID,TerritoryDescription,RegionID from Territories;::y
 List all columns and rows of the Regions table:SELECT RegionID,RegionDescription FROM Regions::y
-List all dairy products in alphabetical order:SELECT Products.ProductName FROM Products INNER JOIN Categories ON Products.CategoryID=4:y
+List all dairy products in alphabetical order:SELECT Products.ProductName FROM Products INNER JOIN Categories ON Products.CategoryID=4;:Join products to categories and use an ID:y
+List all products by a New England Seafood Canary:SELECT DISTINCT Products.ProductName FROM Products INNER JOIN Suppliers ON Products.SupplierID=(SELECT SupplierID FROM Suppliers WHERE Suppliers.CompanyName LIKE "%New England Seafood Canner%");:join products to suppliers and use a nested query with LIKE:y
+Tell me the total amount of orders for Chai:SELECT COUNT(DISTINCT OrderID) from "Order Details" INNER JOIN Products ON Products.ProductID=1;::y
