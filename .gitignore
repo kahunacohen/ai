@@ -2,3 +2,4 @@
 *.sqlite3
 queries.jsonl
 out.txt
+queries_prepared.jsonl
