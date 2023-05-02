@@ -1,4 +1,4 @@
-Free Text:SQL:Training(y/n)
+prompt:completion:training
 List all columns and the first 10 rows of the Order Details table:SELECT OrderID,ProductID,UnitPrice,Quantity,Discount FROM "Order Details" LIMIT 10:y
 List all columns and rows of Products table, ordering by ProductName column:SELECT ProductID,ProductName,SupplierID,CategoryID,QuantityPerUnit,UnitPrice,UnitsInStock,UnitsOnOrder,ReorderLevel,Discontinued from Products ORDER BY ProductName;:y
 List all columns and rows of the Categories table:SELECT CategoryID,CategoryName,Description FROM Categories ORDER BY CategoryName;:y
